@@ -10,7 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 def logout_view(request):
     """Log the user out."""
     logout(request)
-    return HttpResponseRedirect(reverse('users:index'))
+    return HttpResponseRedirect(reverse('accounts:index'))
 
 
 def register(request):
@@ -29,8 +29,8 @@ def register(request):
                                               password=request.POST['password1'])
             login(request, authenticated_user)
             # FIXME the response needs to redirect to another page. Probably page landing page
-            return HttpResponseRedirect(reverse('users:index'))
+            return HttpResponseRedirect(reverse('accounts:index'))
 
     context = {'form': form}
 
-    return render(request, 'users/register.html', context)
+    return render(request, 'accounts/register.html', context)
