@@ -33,4 +33,4 @@ def register(request):
 
     context = {'form': form}
 
-    return render(request, 'accounts/register.html', context)
+    return render(request, 'register.html', context)

@@ -7,7 +7,7 @@ from . import views
 
 urlpatterns = [
     # Login page.
-    url(r'^login/$', login, {'template_name': 'accounts/login.html'},
+    url(r'^login/$', login, {'template_name': 'login.html'},
         name='login'),
 
     # Logout page.
