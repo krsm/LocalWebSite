@@ -18,6 +18,10 @@ class Profile(models.Model):
     address_2 = models.CharField(max_length=50, required=True)
 
 
+    def __str__(self):
+        return self.user.first_name
+
+
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
@@ -26,5 +30,6 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
+# Action that is event driven
 post_save.connect(create_user_profile, sender=User)
 post_save.connect(save_user_profile, sender=User)
