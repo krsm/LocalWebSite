@@ -18,16 +18,16 @@
 
 </head>
 <body>
-<p>
+<!--<p>-->
 
-  {% if user.is_authenticated %}
-    Hello, {{ user.username }}.
-    <a href="{% url 'accounts:logout' %}">log out</a>
-  {% else %}
-    <a href="{% url 'accounts:register' %}">register</a> -
-    <a href="{% url 'accounts:login' %}">log in</a>
-  {% endif %}
-</p>
+  <!--{% if user.is_authenticated %}-->
+    <!--Hello, {{ user.username }}.-->
+    <!--<a href="{% url 'accounts:logout' %}">log out</a>-->
+  <!--{% else %}-->
+    <!--<a href="{% url 'accounts:register' %}">register</a> - -->
+    <!--<a href="{% url 'accounts:login' %}">log in</a>-->
+  <!--{% endif %}-->
+<!--</p>-->
 
 <!--Block of content-->
 {% block content %}

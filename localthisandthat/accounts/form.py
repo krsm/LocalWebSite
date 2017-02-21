@@ -8,6 +8,7 @@ class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     # Anything within a nested Meta class describes additional properties
     # about the particular class to which it belongs
+
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email', 'password')
