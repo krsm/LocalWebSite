@@ -6,10 +6,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
 from .form import UserForm, ProfileForm
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 
-def logout_view(request):
+def home_page(request):
+    response = render(request, 'accounts/index.html', context={})
+
+
+@login_required
+def user_logout(request):
     """Log the user out."""
     logout(request)
     return HttpResponseRedirect(reverse('accounts:index'))
@@ -56,7 +63,7 @@ def register(request):
                'registered': registered
                }
     # Render the template depending on the context
-    return render(request, 'acccounts/register.html', context)
+    return render(request, 'accounts/register.html', context)
 
 
 def user_login(request):
@@ -78,7 +85,8 @@ def user_login(request):
                 return HttpResponse("Account not found.")
         else:
             print("Invalid login details")
-            return HttpResponse("Invalid login details supplied.")
+            # TODO create a page error to come back to main login page
+            return HttpResponse("Invalid login.")
     else:
         return render(request, 'accounts/login.html', {})
 

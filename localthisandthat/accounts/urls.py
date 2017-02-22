@@ -7,14 +7,13 @@ from . import views
 
 urlpatterns = [
     # TODO move to a new page
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.home_page, name='index'),
 
     # Login page.
-    url(r'^login/$', login, {'template_name': 'login.html'},
-        name='login'),
+    url(r'^login/$', views.user_login, name='login'),
 
     # Logout page.
-    url(r'^logout/$', views.logout_view, name='logout'),
+    url(r'^logout/$', views.user_logout, name='logout'),
 
     # Registration page.
     url(r'^register/$', views.register, name='register'),
