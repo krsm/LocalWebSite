@@ -16,6 +16,8 @@ class Profile(models.Model):
     city = models.CharField(max_length=30)
     address_1 = models.CharField(max_length=50)
     address_2 = models.CharField(max_length=50)
+    timestamp = models.DateTimeField(auto_now=True)
+    # TODO create last_login_timestamp
 
     def __str__(self):
         return self.user.first_name

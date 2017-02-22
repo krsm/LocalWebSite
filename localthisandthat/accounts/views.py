@@ -55,8 +55,8 @@ def register(request):
                'profile_fom': profile_fom,
                'registered': registered
                }
-
-    return render(request, 'register.html', context)
+    # Render the template depending on the context
+    return render(request, 'acccounts/register.html', context)
 # #
 #
 # @login_required
