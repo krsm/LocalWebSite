@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -57,6 +57,34 @@ def register(request):
                }
     # Render the template depending on the context
     return render(request, 'acccounts/register.html', context)
+
+
+def user_login(request):
+    """Login a new user."""
+
+    if request.method == 'POST':
+
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                # TODO load home page index
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                return HttpResponse("Account not found.")
+        else:
+            print("Invalid login details")
+            return HttpResponse("Invalid login details supplied.")
+    else:
+        return render(request, 'accounts/login.html', {})
+
+
+
+
 # #
 #
 # @login_required

@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
 
-
-{% block title %}
-Register
-{% endblock %}
+{% block title %}Register{% endblock %}
 {% block content %}
-<h1>Register for Rango</h1>
+<h1>Register</h1>
 {% if registered %}
 App says: <strong>thank you for registering!</strong>
 <!--<a href="{% url 'index' %}">Return to the homepage.</a><br />-->
@@ -18,7 +15,7 @@ enctype="multipart/form-data">
 {{ user_form.as_p }}
 {{ profile_form.as_p }}
 <!-- Provide a button to click to submit the form. -->
-<input type="submit" name="submit" value="Register" />
+<input type="submit" name="submit" value="Register"/>
 </form>
 {% endif %}
 {% endblock %}
