@@ -21,10 +21,10 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
 #
 #
-# print('BASE_DIR', BASE_DIR)
-# # print(__file__)
-# print(os.path.dirname(__file__))
-# print(os.path.dirname(os.path.dirname(__file__)))
+print('BASE_DIR', BASE_DIR)
+print(__file__)
+print(os.path.dirname(__file__))
+print(os.path.dirname(os.path.dirname(__file__)))
 
 
 
