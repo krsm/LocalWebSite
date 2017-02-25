@@ -14,16 +14,18 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
-
-print(__file__)
-print(os.path.dirname(__file__))
-print(os.path.dirname(os.path.dirname(__file__)))
-
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+
+
+#
+#
+# print('BASE_DIR', BASE_DIR)
+# # print(__file__)
+# print(os.path.dirname(__file__))
+# print(os.path.dirname(os.path.dirname(__file__)))
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -130,5 +132,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
+
+STATICFILES_DIR = [STATIC_DIR]  # This is essentially a list of paths with which Django
+#  can expect to find static files that can be served.
 
 STATIC_URL = '/static/'
