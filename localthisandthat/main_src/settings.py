@@ -14,17 +14,23 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+
+print(__file__)
+print(os.path.dirname(__file__))
+print(os.path.dirname(os.path.dirname(__file__)))
+
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
-
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y4nemxu!_&r@a^tj4f*m+qh+7&ov5vb46ygu+v@t*b07fgnte6'
+SECRET_KEY = os.urandom(32)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -61,7 +67,7 @@ ROOT_URLCONF = 'main_src.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
         'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
