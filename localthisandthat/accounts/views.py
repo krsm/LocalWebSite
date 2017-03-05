@@ -33,8 +33,8 @@ def register(request):
         profile_fom = ProfileForm()
     else:
         # Process completed form.
-        user_form = UserForm(data=request.POST)
-        profile_fom = ProfileForm(data=request.POST)
+        user_form = UserForm(data=request.POST, instance=request.user)
+        profile_fom = ProfileForm(data=request.POST, instance=request.user.profile)
         # If
         if user_form.is_valid() and profile_fom.is_valid():
             # Save the new user data

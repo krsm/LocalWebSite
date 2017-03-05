@@ -96,6 +96,12 @@ DATABASES = {
     }
 }
 
+# Password hashing functions
+# https://docs.djangoproject.com/en/1.9/topics/auth/passwords/#how-django-stores-passwords
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -131,6 +137,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATICFILES_DIR = [STATIC_DIR]  # This is essentially a list of paths with which Django
