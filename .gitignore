@@ -103,3 +103,5 @@ ENV/
 # dropbox
 .dropbox
 
+# db.sqlite3
+.sqlite3
