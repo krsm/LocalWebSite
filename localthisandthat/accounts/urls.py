@@ -1,7 +1,9 @@
 """Defines url patterns for users."""
 
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib.auth.views import login
+
+import debug_toolbar
 
 from . import views
 
@@ -17,5 +19,7 @@ urlpatterns = [
 
     # Registration page.
     url(r'^register/$', views.register, name='register'),
+
+    url(r'^__debug__/', include(debug_toolbar.urls)),
 
 ]

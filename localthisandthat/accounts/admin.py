@@ -6,10 +6,10 @@ from .models import Profile
 
 # # create class to customize admin
 class PostModelAdmin(admin.ModelAdmin):
-    list_display = ["first_name", "last_name", "email", "zip", "state", "city", "address_1", "address_2"]
+    list_display = ["first_name", "last_name", "email", "zipcode", "state", "city", "address_1", "address_2"]
     list_display_link = ["timestamp"]
-    list_filter = ["first_name", "last_name", "email", "zip", "state", "city", "address_1", "address_2"]
-    list_editable = ["first_name", "last_name", "email", "zip", "state", "city", "address_1", "address_2"]
+    list_filter = ["first_name", "last_name", "email", "zipcode", "state", "city", "address_1", "address_2"]
+    list_editable = ["first_name", "last_name", "email", "zipcode", "state", "city", "address_1", "address_2"]
     search_fields = ["first_name", "last_name"]
 
     class Meta:

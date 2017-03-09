@@ -30,13 +30,13 @@ def register(request):
         # If it is not a HTTP POST
         # Display blank registration form.
         user_form = UserForm()
-        profile_fom = ProfileForm()
+        profile_form = ProfileForm()
     else:
         # Process completed form.
         user_form = UserForm(data=request.POST, instance=request.user)
-        profile_fom = ProfileForm(data=request.POST, instance=request.user.profile)
+        profile_form = ProfileForm(data=request.POST, instance=request.user.profile)
         # If
-        if user_form.is_valid() and profile_fom.is_valid():
+        if user_form.is_valid() and profile_form.is_valid():
             # Save the new user data
             new_user = user_form.save()
             # Hashing, and and update the object
@@ -45,21 +45,21 @@ def register(request):
 
             # Profile form
             # commit=False to delay saving the model, to avoid integrity problems
-            profile_fom = ProfileForm.save(commit=False)
-            profile_fom.user = new_user
+            profile_form = ProfileForm.save(commit=False)
+            profile_form.user = new_user
 
             # registration was successful
             registered = True
         else:
             # In case of invalid forms
             print('user_form.errors', user_form.errors)
-            print('profile_fom.errors', profile_fom.errors)
+            print('profile_form.errors', profile_form.errors)
 
             # TODO once registered is OK, load main page
             # return HttpResponseRedirect(reverse('accounts:index'))
 
     context = {'user_form': user_form,
-               'profile_fom': profile_fom,
+               'profile_form': profile_form,
                'registered': registered
                }
     # Render the template depending on the context
