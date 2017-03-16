@@ -12,20 +12,12 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 
+# BASE_DIR is the same dir as same manage.py is located
+# using os.path.dirname(BASE_DIR) is a level above
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
-MEDIA_DIR = os.path.join(BASE_DIR, 'media')
-
-
-#
-#
-print('BASE_DIR', BASE_DIR)
-print(__file__)
-print(os.path.dirname(__file__))
-print(os.path.dirname(os.path.dirname(__file__)))
-
+TEMPLATE_DIR = os.path.join(os.path.dirname(BASE_DIR), 'templates')
 
 
 # Quick-start development settings - unsuitable for production
@@ -53,7 +45,7 @@ INSTALLED_APPS = [
     # custom apps
     'accounts',
     # ...
-    'debug_toolbar',
+    # 'debug_toolbar',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -66,7 +58,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'main_src.urls'
@@ -144,7 +136,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATICFILES_DIR = [STATIC_DIR]  # This is essentially a list of paths with which Django
-#  can expect to find static files that can be served.
 
 STATIC_URL = '/static/'
+
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = [STATIC_DIR, ]  # This is essentially a list of paths with which Django
+#  can expect to find static files that can be served.
+
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')  # content delivery
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media_cdn')  # content delivery
+
+#
