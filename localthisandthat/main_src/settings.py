@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     # custom apps
     'accounts',
+    'suppliers',
     # ...
     # 'debug_toolbar',
 ]

@@ -5,6 +5,10 @@ from django.db import models
 # TODO create relationship one to many with supplier and products
 
 
+def upload_location(instance, filename):
+    return "%s/%s" % (instance.supplier.id, filename)
+
+
 class Supplier(models.Model):
 
     first_name = models.CharField(max_length=30)
@@ -40,6 +44,7 @@ class Product(models.Model):
 
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=30)
+    image = models.ImageField(upload_to=upload_location)
     # received_qty =
     # delivered_qty =
     weight = models.CharField(max_length=30)
@@ -47,7 +52,6 @@ class Product(models.Model):
     price_weight = models.CharField(max_length=30)
     price_unit = models.CharField(max_length=30)
     category = models.CharField(max_length=30)
-    image = models.ImageField()
     timestamp = models.DateTimeField()
     updated = models.DateTimeField()
 
