@@ -21,7 +21,7 @@ class Supplier(models.Model):
     address_2 = models.CharField(max_length=50)
     timestamp = models.DateTimeField(auto_now=True)
     updated = models.DateTimeField()
-    is_active = models.CharField()
+    is_active = models.BooleanField()
 
     class Meta:
         ordering = ('updated',)
@@ -39,7 +39,7 @@ class Product(models.Model):
     supplier = models.ForeignKey(
         Supplier,
         on_delete=models.CASCADE,
-        primary_key=True,
+        # primary_key=True,
     )
 
     name = models.CharField(max_length=30)
