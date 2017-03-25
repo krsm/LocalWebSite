@@ -19,19 +19,30 @@ class Supplier(models.Model):
     city = models.CharField(max_length=30)
     address_1 = models.CharField(max_length=50)
     address_2 = models.CharField(max_length=50)
-    timestamp = models.DateTimeField(auto_now=True)
-    updated = models.DateTimeField()
-    is_active = models.BooleanField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
-        ordering = ('updated',)
+        db_table = 'suppliers'
+        ordering = ('updated_at',)
+        verbose_name_plural = 'Suppliers'
 
 
 class Payment(models.Model):
-    pass
-    # value to be pay
-    # due to
-    # last payment
+
+    supplier = models.ForeignKey(
+        Supplier,
+        on_delete=models.CASCADE,
+        # primary_key=True,
+    )
+
+    description = models.TextField(blank=True)
+    value_payment = models.DecimalField(max_digits=6, decimal_places=2)
+    payment_date = models.DateTimeField(auto_now=True)
+    # TODO add field to upload file related to payment
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 class Product(models.Model):
@@ -44,20 +55,31 @@ class Product(models.Model):
 
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=30)
-    image = models.ImageField(upload_to=upload_location)
+    image = models.ImageField(upload_to=upload_location, blank=True)
     # received_qty =
     # delivered_qty =
-    weight = models.CharField(max_length=30)
-    unit = models.CharField(max_length=30)
-    price_weight = models.CharField(max_length=30)
-    price_unit = models.CharField(max_length=30)
+    qty_weight = models.CharField(max_length=30)
+    qty_units = models.CharField(max_length=30)
+    price_per_weight = models.DecimalField(max_digits=6, decimal_places=2)
+    price_per_unit = models.DecimalField(max_digits=6, decimal_places=2)
     category = models.CharField(max_length=30)
-    timestamp = models.DateTimeField()
-    updated = models.DateTimeField()
+    received_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
+    # fields related to delivery
 
-class Delivery(models.Model):
-    pass
+#
+# class Delivery(models.Model):
+#
+#     product = models.ForeignKey(
+#         Supplier,
+#         on_delete=models.CASCADE,
+#         # primary_key=True,
+#     )
+#
+#
+
     # TODO create class to associate qty delivered to a certain user and date
 
 
