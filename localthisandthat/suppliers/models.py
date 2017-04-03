@@ -28,6 +28,9 @@ class Supplier(models.Model):
         ordering = ('updated_at',)
         verbose_name_plural = 'Suppliers'
 
+    def __str__(self):
+        return self.first_name
+
 
 class Payment(models.Model):
 
@@ -67,6 +70,18 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        db_table = 'products'
+        ordering = ('updated_at',)
+        verbose_name_plural = 'Products'
+
+    def __str__(self):
+        return self.name
+
+
+
+
+
     # fields related to delivery
 
 #
@@ -79,11 +94,7 @@ class Product(models.Model):
 #     )
 #
 #
-
     # TODO create class to associate qty delivered to a certain user and date
-
-
-
 
     # user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
     # title = models.CharField(max_length=120)
