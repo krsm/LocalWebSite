@@ -8,8 +8,8 @@ import debug_toolbar
 from . import views
 
 urlpatterns = [
-    # TODO move to a new page
-    url(r'^$', views.home_page, name='index'),
+    # # TODO remote homepage of views
+    # url(r'^$', views.home_page, name='index'),
 
     # Login page.
     url(r'^login/$', views.user_login, name='login'),
