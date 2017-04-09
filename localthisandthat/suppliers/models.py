@@ -13,7 +13,7 @@ class Supplier(models.Model):
 
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    email = models.EmailField(max_length=160)
+    email = models.EmailField(max_length=160, blank=True)
     zip = models.CharField(max_length=6)
     state = models.CharField(max_length=2)
     city = models.CharField(max_length=30)

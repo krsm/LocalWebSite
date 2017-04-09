@@ -11,14 +11,17 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import sys
 
 # BASE_DIR is the same dir as same manage.py is located
 # using os.path.dirname(BASE_DIR) is a level above
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_DIR = os.path.join(os.path.dirname(BASE_DIR), 'templates')
+# Attempt to fix relative import error
+sys.path.insert(0, os.path.join(BASE_DIR))  # this line was to fix relative import errors
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
