@@ -19,7 +19,7 @@ import sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Attempt to fix relative import error
-sys.path.insert(0, os.path.join(BASE_DIR))  # this line was to fix relative import errors
+sys.path.insert(0, os.path.join(BASE_DIR))  # this line was added to fix relative import errors #TODO remove later
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 
@@ -79,6 +79,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',   # to access the MEDIA_URL
+                # django.template.context_processors.media
             ],
         },
     },

@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
-<!--{% load staticfiles %}-->
+{% load staticfiles %}
 
 {% block content %}
 
+{% for product in products %}
+<div>
+  {% if product.image %}
+  <img src='{{ MEDIA_URL }}{{ product.image }}'
 
-  <!--{% for product in products %}-->
-    <!--<div>-->
-      <!--<img src="{{ product.image }}">-->
-    <!--</div>-->
-  <!--{% endfor %}-->
+       width="400"
+       height="400"
+  />
+  {% endif %}
+</div>
+{% endfor %}
 
 {% endblock %}

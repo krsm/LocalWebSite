@@ -15,6 +15,7 @@ def home_page(request):
     # getting the Products Model
     products_model = apps.get_model('suppliers', 'Product')
     products = products_model.objects.all().order_by('-id')
+
     # print(products)
     test_html = {'products': products}
     return render(request, 'core/main_page.html', test_html)
